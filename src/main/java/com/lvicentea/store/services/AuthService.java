@@ -6,6 +6,7 @@ import com.lvicentea.store.entities.User;
 import com.lvicentea.store.enums.RoleList;
 import com.lvicentea.store.jwt.JwtUtil;
 import com.lvicentea.store.repositories.RoleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -22,6 +23,7 @@ public class AuthService {
     private final JwtUtil jwtUtil;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
+    @Autowired
     public AuthService(UserService userService, RoleRepository roleRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil, AuthenticationManagerBuilder authenticationManagerBuilder) {
         this.userService = userService;
         this.roleRepository = roleRepository;
