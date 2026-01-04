@@ -3,10 +3,13 @@ package com.lvicentea.store.services.impl;
 import com.lvicentea.store.dtos.request.ProductoRequestDTO;
 import com.lvicentea.store.dtos.response.ProductoResponseDTO;
 import com.lvicentea.store.entities.Producto;
+import com.lvicentea.store.exception.NotFoundException;
 import com.lvicentea.store.repositories.ProductoRepository;
 import com.lvicentea.store.services.IProductoService;
 import com.lvicentea.store.utils.Mappers;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class ProductoService implements IProductoService {
@@ -21,5 +24,15 @@ public class ProductoService implements IProductoService {
     public ProductoResponseDTO saveProducto(ProductoRequestDTO productoRequestDTO) {
         Producto producto = Mappers.productoRequestToProducto(productoRequestDTO);
         return Mappers.productoToProductoResponseDTO(this.productoRepository.save(producto));
+    }
+
+    @Override
+    public ProductoResponseDTO findProducto(Long id) {
+        Optional<Producto> producto = this.productoRepository.findById(id);
+        if (producto.isPresent()) {
+            return Mappers.productoToProductoResponseDTO(producto.get());
+        }else {
+            throw new NotFoundException("Producto no encontrado");
+        }
     }
 }

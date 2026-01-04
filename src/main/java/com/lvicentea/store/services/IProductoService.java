@@ -7,6 +7,7 @@ public interface IProductoService {
 
     public ProductoResponseDTO saveProducto(ProductoRequestDTO productoRequestDTO);
 
+    public ProductoResponseDTO findProducto(Long id);
 
 
 }
