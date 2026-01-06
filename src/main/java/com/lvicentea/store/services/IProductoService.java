@@ -9,5 +9,9 @@ public interface IProductoService {
 
     public ProductoResponseDTO findProducto(Long id);
 
+    public ProductoResponseDTO updateProducto(Long id, ProductoRequestDTO productoRequestDTO);
+
+    public void deleteProduct(Long id);
+
 
 }

@@ -30,4 +30,16 @@ public class ProductoController {
         return ResponseEntity.ok().body(productoResponseDTO);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductoResponseDTO> actualizarProducto(@PathVariable Long id, @RequestBody ProductoRequestDTO productoRequestDTO){
+        ProductoResponseDTO productoResponseDTO = this.productoService.updateProducto(id, productoRequestDTO);
+        return ResponseEntity.ok().body(productoResponseDTO);
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarProducto(@PathVariable Long id){
+        this.productoService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

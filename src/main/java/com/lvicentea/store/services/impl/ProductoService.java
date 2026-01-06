@@ -35,4 +35,29 @@ public class ProductoService implements IProductoService {
             throw new NotFoundException("Producto no encontrado");
         }
     }
+
+    @Override
+    public ProductoResponseDTO updateProducto(Long id, ProductoRequestDTO productoRequestDTO) {
+        Optional<Producto> productoOpt = this.productoRepository.findById(id);
+        if (productoOpt.isPresent()) {
+            Producto producto = productoOpt.get();
+            producto.setNombre(productoRequestDTO.getNombre());
+            producto.setDescripcion(productoRequestDTO.getDescripcion());
+            producto.setPrecio(productoRequestDTO.getPrecio());
+            producto.setCantidad(productoRequestDTO.getCantidad());
+            return Mappers.productoToProductoResponseDTO(this.productoRepository.save(producto));
+        }else{
+            throw new NotFoundException("Producto no encontrado para modificar");
+        }
+    }
+
+    @Override
+    public void deleteProduct(Long id) {
+        Optional<Producto> producto = this.productoRepository.findById(id);
+        if(producto.isPresent()){
+            this.productoRepository.deleteById(id);
+        }else{
+            throw new NotFoundException("Producto no encontrado para eliminar");
+        }
+    }
 }
