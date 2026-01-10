@@ -9,18 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductoRequestDTO {
-
-    @NotBlank
+public class CategoriaRequestDTO {
     @NotNull
-    public String nombre;
-    public String descripcion;
     @NotBlank
-    @NotNull
-    public Double precio;
-    @NotBlank
-    @NotNull
-    public Double cantidad;
-    public CategoriaRequestDTO categoria;
-
+    private String nombre;
+    private String descripcion;
 }

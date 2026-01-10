@@ -16,6 +16,7 @@ public class ProductoResponseDTO {
     public String descripcion;
     public Double precio;
     public Double cantidad;
+    public CategoriaResponseDTO categoria;
 
 
 }
