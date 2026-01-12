@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategoriaRequestDTO {
+    private Long id;
     @NotNull
     @NotBlank
     private String nombre;

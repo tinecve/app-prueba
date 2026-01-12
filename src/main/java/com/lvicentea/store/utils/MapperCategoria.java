@@ -10,6 +10,7 @@ public class MapperCategoria {
 
     public static final Categoria categoriaRequestTOCategoria(CategoriaRequestDTO categoriaRequestDTO){
         Categoria categoria = new Categoria();
+        categoria.setId(categoriaRequestDTO.getId());
         categoria.setNombre(categoriaRequestDTO.getNombre());
         categoria.setDescripcion(categoriaRequestDTO.getDescripcion());
         return categoria;
