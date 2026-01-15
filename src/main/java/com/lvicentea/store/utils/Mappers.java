@@ -14,8 +14,8 @@ public class Mappers {
         productoResponseDTO.setId(producto.getId());
         productoResponseDTO.setNombre(producto.getNombre());
         productoResponseDTO.setDescripcion(producto.getDescripcion());
-        productoResponseDTO.setCantidad(producto.getCantidad());
-        productoResponseDTO.setPrecio(producto.getPrecio());
+        productoResponseDTO.setCantidad(producto.getStockActual());
+        productoResponseDTO.setPrecio(producto.getPrecioCompra());
 
         return productoResponseDTO;
     }
@@ -25,8 +25,8 @@ public class Mappers {
 
         producto.setNombre(productoRequestDTO.getNombre());
         producto.setDescripcion(productoRequestDTO.getDescripcion());
-        producto.setCantidad(productoRequestDTO.getCantidad());
-        producto.setPrecio(productoRequestDTO.getPrecio());
+        producto.setStockActual(productoRequestDTO.getCantidad());
+        producto.setPrecioCompra(productoRequestDTO.getPrecio());
 
         return producto;
     }

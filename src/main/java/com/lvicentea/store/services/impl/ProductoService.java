@@ -43,8 +43,8 @@ public class ProductoService implements IProductoService {
             Producto producto = productoOpt.get();
             producto.setNombre(productoRequestDTO.getNombre());
             producto.setDescripcion(productoRequestDTO.getDescripcion());
-            producto.setPrecio(productoRequestDTO.getPrecio());
-            producto.setCantidad(productoRequestDTO.getCantidad());
+            producto.setPrecioCompra(productoRequestDTO.getPrecio());
+            producto.setStockActual(productoRequestDTO.getCantidad());
             return Mappers.productoToProductoResponseDTO(this.productoRepository.save(producto));
         }else{
             throw new NotFoundException("Producto no encontrado para modificar");

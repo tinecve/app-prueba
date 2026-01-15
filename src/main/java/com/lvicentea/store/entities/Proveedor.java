@@ -5,20 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "categories")
-public class Categoria {
+@Table(name = "proveedores")
+public class Proveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
     private String nombre;
-    private String descripcion;
-    @OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY)
-    private List<Producto> productos;
+    @Column(nullable = false)
+    private String contacto;
+    private String telefono;
+    private String email;
+    private String direccion;
+    private boolean activo;
+
 }
